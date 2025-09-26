@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Moja Galerija — NVO Endelus</title>
+  <style>
+    :root {
+
+  --blur: saturate(140%) blur(8px);
+}
+[data-theme="light"]{
+  --bg: #f6f9fc;
+  --bg-soft: #ffffff;
+  --card: #ffffff;
+  --text: #0b1117;
+  --muted: #4a5d73;
+  --primary: #16a34a;
+  --primary-600:#148541;
+  --accent: #06b6d4;
+  --danger: #dc2626;
+  --warning:#d97706;
+  --link: #1d4ed8;
+  --glass: rgba(0,0,0,.06);
+  --shadow: 0 10px 30px rgba(0,0,0,.12);
+}
+h1  { color: #2dd4bf; }
+.kicker  { color: #2dd4bf; }
+.lead { color: #2dd4bf; }
+.nav.desktop { color: #2dd4bf; }
+
+    /* RESET */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans", "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      background: var(--bg);
+      color: #222;
+      line-height: 1.6;
+      margin: 30px; /* razmak oko stranice (originalni zahtjev: "dodaj margine") */
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+
+    /* centralni kontejner */
+    .container { max-width: var(--max-w); margin: 0 auto; padding: 0 20px; }
+
+    /* Header */
+.header { position: fixed; inset: 0 0 auto 0; height: 72px; z-index: 50; display: flex; align-items: center; justify-content: space-between; padding: 0 20px; backdrop-filter: var(--blur); background: var(--glass); border-bottom: 1px solid rgba(255,255,255,.08); }
+.brand { display: flex; align-items: center; gap: 12px; font-weight: 800; letter-spacing:.2px; }
+.brand-mark{ width:36px; height:36px; border-radius:12px; background: linear-gradient(135deg,var(--primary),var(--accent)); box-shadow: var(--shadow); display:grid; place-items:center; }
+.brand-mark svg{ width:22px; height:22px; color:white; }
+.nav { display: flex; gap: 20px; align-items: center; }
+.nav a { color: var(--text); opacity:.9; font-weight:600;text-decoration: none; }
+.nav a.active { color: var(--primary); }
+.theme-toggle{ width:42px; height:42px; border-radius:12px; border:1px solid rgba(255,255,255,.15); background: transparent; display:grid; place-items:center; cursor:pointer; }
+.nav.desktop { color: #2dd4bf; }
+
+    /* HERO SEKCIJA */
+    .hero {
+      min-height: 64vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      position:relative;
+      padding:48px 20px;
+      border-radius:14px;
+      overflow:hidden;
+      margin-bottom:24px;
+      background-image: linear-gradient(180deg, rgba(0,0,0,0.18), rgba(0,0,0,0.35)), url("./slikePrice/s1.jpg");
+      background-size: cover;
+      background-position: center;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.18);
+    }
+    .hero-content { position:relative; z-index:2; color: #fff; max-width:980px; }
+    .hero h1 { font-size: clamp(1.6rem, 4vw, 3rem); margin-bottom:10px; text-shadow: 0 6px 22px rgba(0,0,0,0.6); }
+    .hero p { font-size:1.05rem; margin-bottom:18px; opacity:0.95; }
+    .btn { display:inline-block; padding:0.75rem 1.5rem; background: linear-gradient(90deg, var(--accent-2), #f4c542); color:#222; font-weight:800; border-radius:30px; text-decoration:none; box-shadow: 0 8px 18px rgba(0,0,0,0.18); transition: transform 0.22s ease, box-shadow 0.22s ease; }
+    .btn:hover { transform: translateY(-3px); box-shadow: 0 18px 36px rgba(0,0,0,0.22); }
+
+    /* SEKCIJE */
+    section { padding: 28px 0; }
+    section .card { background: var(--card); border-radius:12px; padding:22px; box-shadow: 0 6px 18px rgba(16,24,40,0.06); }
+    section h2 { text-align:center; margin-bottom:16px; font-size:1.6rem; color:#111; }
+
+    /* GALLERY */
+    .gallery {
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      grid-auto-rows: 170px;
+      gap:18px;
+      align-items:stretch;
+    }
+
+    .gallery-item {
+      position:relative;
+      overflow:hidden;
+      border-radius:12px;
+      background: linear-gradient(180deg, rgba(0,0,0,0.02), rgba(0,0,0,0.04));
+      box-shadow: 0 6px 18px rgba(2,6,23,0.06);
+      cursor: zoom-in;
+      transition: transform 0.28s cubic-bezier(.2,.9,.3,1), box-shadow 0.28s;
+    }
+    .gallery-item img { width:100%; height:100%; object-fit:cover; display:block; transition: transform 0.7s cubic-bezier(.2,.9,.3,1), filter 0.45s; filter: saturate(0.98) contrast(0.98); }
+    .gallery-item:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(2,6,23,0.14); }
+    .gallery-item:hover img { transform: scale(1.06); filter: none; }
+
+    /* malo varijacije rasporeda - zadržano ponašanje iz originala, ali sada cilja .gallery-item */
+    .gallery .gallery-item:nth-child(2) { grid-row: span 2; }
+    .gallery .gallery-item:nth-child(4) { grid-column: span 2; }
+
+    /* hover caption */
+    .meta {
+      position:absolute; left:0; right:0; bottom:0; padding:12px 14px; color:#fff; font-weight:600;
+      background: linear-gradient(180deg, rgba(0,0,0,0), rgba(0,0,0,0.55));
+      transform: translateY(6px); opacity:0; transition: all 0.22s ease;
+      font-size:0.95rem;
+    }
+    .gallery-item:hover .meta { transform: translateY(0); opacity:1; }
+
+    /* LIGHTBOX */
+    #lightbox { position:fixed; inset:0; display:none; place-items:center; background: rgba(3,6,14,0.75); z-index:2000; }
+    #lightbox.open { display:grid; }
+    .lightbox-inner { max-width:92vw; max-height:88vh; position:relative; }
+    .lightbox-inner img { display:block; max-width:100%; max-height:100%; border-radius:8px; box-shadow: 0 24px 60px rgba(2,6,23,0.5); }
+    .lightbox-caption { margin-top:10px; color:#fff; text-align:center; font-size:0.98rem; }
+    .lb-btn { position:absolute; top:50%; transform:translateY(-50%); background:rgba(0,0,0,0.45); border:none; color:#fff; width:44px; height:44px; border-radius:8px; display:flex; align-items:center; justify-content:center; cursor:pointer; }
+    .lightbox-prev { left:-56px; }
+    .lightbox-next { right:-56px; }
+    .lb-close { position:absolute; right:-4px; top:-4px; background:rgba(0,0,0,0.5); border-radius:8px; width:36px; height:36px; display:flex; align-items:center; justify-content:center; color:#fff; border:none; cursor:pointer; }
+
+    footer {
+  background: #111; /* tamna pozadina */
+  color: #eee;
+  padding: 40px 20px;
+  font-family: Arial, sans-serif;
+}
+
+footer .container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 30px;
+}
+
+/* Brand sekcija */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.brand-mark svg {
+  width: 30px;
+  height: 30px;
+  color: #4CAF50; /* zelena boja */
+}
+
+footer p.muted,
+footer small.muted {
+  color: #aaa;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+/* Linkovi */
+footer ul {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0 0;
+}
+
+footer ul li {
+  margin: 6px 0;
+}
+
+footer ul li a {
+  color: #eee;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+footer ul li a:hover {
+  color: #4CAF50;
+}
+
+/* Newsletter */
+footer form .input {
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  outline: none;
+  font-size: 0.95rem;
+}
+
+footer form .btn {
+  padding: 10px;
+  background: #4CAF50;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+footer form .btn:hover {
+  background: #45a049;
+}
+
+footer form small {
+  display: block;
+  margin-top: 6px;
+  font-size: 0.8rem;
+}
+
+/* Donji red */
+footer > .container:last-child {
+  border-top: 1px solid #333;
+  padding-top: 15px;
+}
+
+    /* responsive tweaks */
+    @media (max-width: 860px) {
+      .gallery { grid-auto-rows: 150px; }
+      .gallery .gallery-item:nth-child(2), .gallery .gallery-item:nth-child(4) { grid-row: unset; grid-column: unset; }
+      .lightbox-prev, .lightbox-next { display:none; }
+      .lightbox-inner { max-width: 96vw; }
+      .hero { min-height:48vh; }
+    }
+
+    @media (max-width:480px){
+      .hero h1 { font-size:1.4rem; }
+      nav a { font-size:0.95rem; }
+      body { margin:18px; }
+    }
+
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <div class="brand">
+      <div class="brand-mark" aria-hidden="true">
+      
+      </div>
+     
+      <img src="logo.png"  width="70px" alt="">
+    </div>
+
+    <nav class="nav desktop" aria-label="Glavna navigacija">
+      <a href="index.html">Početna</a>
+      <a href="#priroda"></a>Hrana za Gazu
+      <a href="#gradovi">Knjige</a>
+      <a href="#ljudi">Seminari</a>
+      
+    </nav>
+
+    <div class="nav">
+      
+      
+    </div>
+  </header>
+
+
+  <!-- HERO SEKCIJA -->
+  <section class="hero">
+    <div class="hero-content container">
+      <h1>NVO Endelus — Galerija</h1>
+      <p>Kratki sažetak galerije — slike naših projekata, podjela pomoći i susreti s lokalnim zajednicama.</p>
+    </div>
+  </section>
+
+  <!-- SEKCIJE -->
+  <section id="priroda" class="container">
+    <div class="card">
+      <h2>Hrana za Gazu</h2>
+      <div class="gallery" aria-label="Galerija: Hrana za Gazu">
+        <div class="gallery-item"><img src="slikePrice/p1.jpg" alt="Priroda 1" data-caption="Hrana i paketi - p1"><div class="meta"></div></div>
+        <div class="gallery-item"><img src="slikePrice/p2.jpg" alt="Priroda 2" data-caption="Distribucija - p2"><div class="meta"></div></div>
+        <div class="gallery-item"><img src="slikePrice/p3.jpg" alt="Priroda 3" data-caption="Priprema paketa - p3"><div class="meta"></div></div>
+        <div class="gallery-item"><img src="slikePrice/p4.jpg" alt="Priroda 4" data-caption="Dobrotvorna akcija - p4"><div class="meta"></div></div>
+        <div class="gallery-item"><img src="slikePrice/p5.jpg" alt="Priroda 5" data-caption="p5"><div class="meta"></div></div>
+        <div class="gallery-item"><img src="slikePrice/p6.jpg" alt="Priroda 6" data-caption="p6"><div class="meta"></div></div>
+        <div class="gallery-item"><img src="slikePrice/p7.jpg" alt="Priroda 7" data-caption="p7"><div class="meta"></div></div>
+        <div class="gallery-item"><img src="slikePrice/p8.jpg" alt="Priroda 8" data-caption="p8"><div class="meta"></div></div>
+        <div class="gallery-item"><img src="slikePrice/p9.jpg" alt="Priroda 9" data-caption="p9"><div class="meta"></div></div>
+        <div class="gallery-item"><img src="slikePrice/p10.jpg" alt="Priroda 10" data-caption="p10"><div class="meta"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="gradovi" class="container">
+    <div class="card">
+      <h2>Podjela knjiga i akcije</h2>
+      <div class="gallery" aria-label="Galerija: Podjela knjiga">
+        <div class="gallery-item"><img src="slikePrice/k1.jpg" alt="Grad 1" data-caption="Podjela knjiga - k1"><div class="meta">Podjela knjiga</div></div>
+        <div class="gallery-item"><img src="slikePrice/k2.jpg" alt="Grad 2" data-caption="k2"><div class="meta"></div></div>
+        <div class="gallery-item"><img src="slikePrice/k3.jpg" alt="Grad 3" data-caption="k3"><div class="meta"></div></div>
+        <div class="gallery-item"><img src="slikePrice/k4.jpg" alt="Grad 4" data-caption="k4"><div class="meta"></div></div>
+        <div class="gallery-item"><img src="slikePrice/k5.jpg" alt="Grad 5" data-caption="k5"><div class="meta"></div></div>
+        <div class="gallery-item"><img src="slikePrice/k6.jpg" alt="Grad 6" data-caption="k6"><div class="meta"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="ljudi" class="container">
+    <div class="card">
+      <h2>Seminari i okupljanja</h2>
+      <div class="gallery" aria-label="Galerija: Seminari">
+        <div class="gallery-item"><img src="slikePrice/s1.jpg" alt="Osoba 1" data-caption="Seminar - s1"><div class="meta">Seminar</div></div>
+        <div class="gallery-item"><img src="slikePrice/s2.jpg" alt="Osoba 2" data-caption=""><div class="meta"></div></div>
+        <div class="gallery-item"><img src="slikePrice/s3.jpg" alt="Osoba 3" data-caption=""><div class="meta"></div></div>
+        <div class="gallery-item"><img src="slikePrice/s4.jpg" alt="Osoba 4" data-caption=""><div class="meta"></div></div>
+        <div class="gallery-item"><img src="slikePrice/s5.jpg" alt="Osoba 5" data-caption=""><div class="meta"></div></div>
+        <div class="gallery-item"><img src="slikePrice/s6.jpg" alt="Osoba 6" data-caption=""><div class="meta"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LIGHTBOX -->
+  <div id="lightbox" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="lightbox-inner">
+      <button class="lb-close" aria-label="Zatvori">✕</button>
+      <button class="lb-btn lightbox-prev" aria-label="Prethodna">◀</button>
+      <img class="lightbox-img" src="" alt="">
+      <button class="lb-btn lightbox-next" aria-label="Sljedeća">▶</button>
+      <div class="lightbox-caption"></div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container footer-grid">
+      <div>
+        <div class="brand" style="margin-bottom:8px; display:flex; align-items:center; gap:10px;">
+          <div class="brand-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M2 12h20" /></svg></div>
+          <strong><img src="logo.png" width="70" alt="logo"></strong>
+        </div>
+        <p class="muted">Zagovaramo mir, dostojanstvo i jednak pristup resursima. Hvala što ste dio naše priče.</p>
+      </div>
+
+      <div>
+        <strong>Brzi linkovi</strong>
+        <ul>
+          <li><a href="#priroda">Galerija</a></li>
+          <li><a href="index.html">Početna</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <strong>Newsletter</strong>
+        <form id="footerNewsletter">
+          <input class="input" type="email" name="email" placeholder="Email" required style="width:100%; margin-bottom:8px;">
+          <button class="btn" type="submit" style="width:100%">Prijavi se</button>
+          <small id="footerMsg" class="muted"></small>
+        </form>
+      </div>
+    </div>
+
+    <div class="container" style="margin-top: 20px; display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap;">
+      <small class="muted">© <span id="year"></span> NVO Endelus. Sva prava zadržana.</small>
+    </div>
+  </footer>
+
+
+
+</body>
+</html>

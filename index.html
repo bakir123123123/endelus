@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NVO Solidarnost — Pomoć ljudima i Palestini</title>
+  <meta name="description" content="NVO koja pruža humanitarnu pomoć, zagovara prava i gradi mostove solidarnosti sa Palestinom i ugroženim zajednicama širom svijeta." />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+ 
+</head>
+<body>
+  <!-- Reading progress bar -->
+  <div class="progress" id="progress"></div>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="brand">
+      <div class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2v20M2 12h20" />
+        </svg>
+      </div>
+     
+      <img src="logo.png"  width="70px" alt="">
+    </div>
+
+    <nav class="nav desktop" aria-label="Glavna navigacija">
+      <a href="#o-nama">O nama</a>
+      <a href="#video">Video</a>
+      <a href="#uticaj">Uticaj</a>
+      <a href="#price">Priče</a>
+      <a href="#faq">FAQ</a>
+      <a href="#kontakt">Kontakt</a>
+    </nav>
+
+    <div class="nav">
+      <button class="theme-toggle" id="themeToggle" aria-label="Promijeni temu">
+        <svg id="iconSun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M6.76 4.84l-1.8-1.79-1.41 1.41 1.79 1.8 1.42-1.42zm10.45 14.32l1.79 1.8 1.41-1.41-1.8-1.79-1.4 1.4zM1 13h3v-2H1v2zm19 0h3v-2h-3v2zM11 1h2v3h-2V1zm0 19h2v3h-2v-3zM4.95 19.07l1.41 1.41 1.8-1.79-1.41-1.41-1.8 1.79zM17.66 4.84l1.41-1.41-1.79-1.8-1.41 1.41 1.79 1.8z"/><circle cx="12" cy="12" r="5"/></svg>
+        <svg id="iconMoon" style="display:none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M21.64 13A9 9 0 1111 2.36 7 7 0 0021.64 13z"/></svg>
+      </button>
+      <button class="btn ghost menu-toggle" id="menuToggle">Meni</button>
+      
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
+    <a href="#o-nama">O nama</a>
+    <a href="#video">Video</a>
+    <a href="#uticaj">Uticaj</a>
+    <a href="#price">Priče</a>
+    <a href="#faq">FAQ</a>
+    <a href="#kontakt">Kontakt</a>
+  </div>
+
+  <main>
+    <!-- HERO: Background video + overlay title & paragraph -->
+    <section class="hero" aria-label="Hero sekcija">
+      <!-- Zamijeni src sa svojim videom -->
+      <video id="heroVideo" autoplay muted loop playsinline>
+        <source src="hero.mp4" type="video/mp4" />
+      </video>
+      <div class="overlay">
+        <div class="kicker">Zajedno za život i dostojanstvo</div>
+        <h1 class="title">Nada raste kada djelujemo zajedno</h1>
+        <p class="lead"><i>Endelus spaja ljude dobre volje i prenosi snagu empatije tamo gdje je najpotrebnija — u hitnoj pomoći, obrazovanju i psihosocijalnoj podršci.</i></p>
+        <div class="hero-cta">
+          <a class="btn" href="galerija.html">Pogledaj galeriju</a>
+          <button class="btn ghost" id="heroPlay">Pauziraj video</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- O NAMA -->
+    <section id="o-nama" class="reveal">
+      <div class="container">
+        <span class="tag">Ko smo</span>
+        <h2 class="section-title">NVO Endelus sa misijom solidarnosti</h2>
+        <p class="section-lead">Neprofitna organizacija fokusirana na humanitarnu pomoć, zaštitu ljudskih prava i osnaživanje zajednica. Djelujemo transparentno i u partnerstvu sa lokalnim akterima.</p>
+        <div class="spacer"></div>
+        <div class="cards">
+          <article class="card">
+            <div class="icon" aria-hidden="true"><img src="ikone/handshake.png" alt=""></div>
+            <h3>Humanitarne akcije</h3>
+            <p>Hitne isporuke hrane, vode i lijekova, sa jasnim izvještavanjem svake kampanje.</p>
+          </article>
+
+          <article class="card">
+            <div class="icon" aria-hidden="true"><img src="ikone/human.png" alt=""></div>
+            <h3>Organizacija kulturnih manifestacija</h3>
+            <p>Naša organizacija pruža kompletnu podršku u planiranju i realizaciji kulturnih događaja i stručnih seminara.</p>
+          </article>
+
+
+          <article class="card">
+            <div class="icon" aria-hidden="true"><img src="ikone/book.png" alt=""></div>
+            <h3>Izdavanje i distribucija edukativno-informacionih brosura</h3>
+            <p>Bavimo se profesionalnim izdavanjem i distribucijom brošura i letaka koji prenose edukativne i informativne sadržaje na jasan i pristupačan način.</p>
+          </article>
+
+
+          <article class="card">
+            <div class="icon" aria-hidden="true"><img src="ikone/crowd-of-users.png" alt=""></div>
+            <h3>Organizovanje javnih tribina</h3>
+            <p>Kroz stručno vođene diskusije i kvalitetne goste, stvaramo okruženje koje inspiriše, informiše i doprinosi razvoju kritičkog mišljenja i društvene odgovornosti.</p>
+          </article>
+          <article class="card">
+            <div class="icon" aria-hidden="true"><img src="ikone/brain.png" alt=""></div>
+            <h3>Psihosocijalna podrška</h3>
+            <p>Sigurni prostori, savjetovanje i podrška porodicama u krizi.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- UTICAJ sa brojačima -->
+    <section id="uticaj" class="reveal">
+      <div class="container">
+        <span class="tag">Rezultati</span>
+        <h2 class="section-title">Naš uticaj u brojkama</h2>
+        <div class="stats" id="stats">
+          <div class="stat"><div class="num" data-count="21500">0</div><div class="label">Ljudi podržano</div></div>
+          <div class="stat"><div class="num" data-count="48">0</div><div class="label">Volontera aktivno</div></div>
+          <div class="stat"><div class="num" data-count="42">0</div><div class="label">Projekata godišnje</div></div>
+          <div class="stat"><div class="num" data-count="8">0</div><div class="label">Uspjesno realizovanih akcija za Palestinu</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRIČE — Carousel -->
+    <section id="price" class="reveal">
+      <div class="container">
+        <span class="tag">Iz prve ruke</span>
+        <h2 class="section-title">Dio onog što radimo...</h2>
+        <div class="carousel" id="carousel" aria-roledescription="carousel">
+          <div class="track" id="track">
+            <article class="slide">
+              <img class="media" src="slikePrice/palestina.jpg" alt="Volonteri dostavljaju pomoć"/>
+              <div class="content">
+                <h3>Hrana za Gazu</h3>
+                <p class="muted">Naša NVO Endelus već duži niz mjeseci, uz pomoć naših sugrađana iljudi velikog srca, sprovodi akcije u Gazi kroz projekat "Hrana za Gazu".</p>
+                <p class="muted">Prikupljenim sredstvima iz našeg grada obezbjeđujemo obroke onima kojima je najpotrebnije - porodicama, djeci i siromašnima u ovom napaćenom dijelu svijeta.
+                  Ova humana misija iz Rožaja šalje jasnu poruku: mali grad može mati veliko srce. Hvala svima koji svojim prilozima, dovama i podrškom učestvuju u ovom hajru.</p>
+                
+              </div>
+            </article>
+            <article class="slide">
+              <img class="media" src="slikePrice/hajla.jpg" alt="Djeca u učionici"/>
+              <div class="content">
+                <h3>Pohod na Hajlu</h3>
+            <p class="muted">NVO Endelus organizovao seminar i pohod na najviši vrh Rožaja uz podršku Crvenog Krsta koji je kroz seminar objasnio najvažnije detalje prve pomoći i kako mi kao pojedinci trebamo reagovati ukoliko se nađemo u kriznim situacijama,
+               obzirom da je u sklopu seminara organizovan planinarski pohod oni su se dotakli i toga kako postupiti u slučaju neželjenih situacija na planini.
+            </p>
+            <p class="muted">Drugi dio seminara je upotpunio imam stare džamije u Koljenu Elmaz Kurtagić koji je kroz svoje predavanje objasnio značaj i važnost islamskih vrijednosti i zajedništva muslimana na Balkanu.</p>
+            <p class="muted">Što se tiče samog pohoda koji je bio oko 13 km - protekao je u fenomenalnom tonu, učesnici su dobro izdržali kompletan uspon na čelu sa licenciranim planinarskim vodičem Hamzom Ganićem.</p>
+            <p class="muted">Pohodi na planine imaju poseban značaj za nas - oni jačaju tijelo i duh, uče nas zajedništvu i međusobnoj podršci, podsjećaju nas na ljepotu i veličinu Allahovog stvaranja i pružaju priliku da se udaljimo od svakodnevnice j približimo prirodi. </p>
+              </div>
+            </article>
+            <article class="slide">
+              <img class="media" src="slikePrice/seminar1.jpg" alt="Savjetovanje i podrška"/>
+              <div class="content">
+                <h3>Dvodnevnoi seminar sa hfz. prof. Adnanom Mrkonjićem</h3>
+                <p class="muted">Održan je dvodnevni seminar na kojem je predavač bio hafiz prof. Adnan Mrkonjić. Seminaru je prisustvovalo oko 70 učesnika.
+                  Prvog dana predavanja su održana u kongresnoj sali etno sela ,Jela", gde su obrađene važne teme iz oblasti vjere i savremenog života muslimana. Drugog dana seminar je nastavljen u prirodi, u okviru izleta koji je obuhvatio zajednički ručak i neformalan program.</p>
+              
+              </div>
+            </article>
+
+            <article class="slide">
+              <img class="media" src="slikePrice/musaf.jpg" alt="Savjetovanje i podrška"/>
+              <div class="content">
+                <h3>Vakuf knjige</h3>
+                <p class="muted">Džamiji ipored stadiona uvakufilismo više primjeraka prijevoda Kur'ana j islamskih knjiga. Knjige su dostupne svim posjetiocima džamije."</p>
+            
+                <button class="btn ghost">Pročitaj više</button>
+              </div>
+            </article>
+
+          </div>
+          <div class="controls">
+            <button class="ctrl" id="prev">◀</button>
+            <button class="ctrl" id="next">▶</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="reveal">
+      <div class="container">
+        <span class="tag">Često postavljena pitanja</span>
+        <h2 class="section-title">Imate pitanje? Imamo odgovor.</h2>
+        <div class="cards">
+          <div class="faq-item card">
+            <div class="faq-q"><strong>Kako mogu biti siguran da pomoć zaista stiže do onih kojima je namijenjena?</strong><span>+</span></div>
+            <div class="faq-a"><p>Endelus vodi detaljnu evidenciju svih aktivnosti i redovno objavljuje izvještaje. Naši timovi i partneri na terenu dokumentuju distribuciju pomoći kako bi sve bilo potpuno transparentno.</p></div>
+          </div>
+          <div class="faq-item card">
+            <div class="faq-q"><strong>Da li mogu pomoći i ako nemam finansijska sredstva?</strong><span>+</span></div>
+            <div class="faq-a"><p>Naravno. Možete volontirati, širiti informacije o našim projektima, pružiti stručnu podršku ili pomoći kroz prikupljanje sredstava u svojoj zajednici.</p></div>
+          </div>
+          <div class="faq-item card">
+            <div class="faq-q"><strong>Kako mogu izvršiti donaciju?</strong><span>+</span></div>
+            <div class="faq-a"><p>Donacije možete uplatiti online putem naše stranice, bankovnog računa ili direktno kroz akcije koje organizujemo na terenu.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+    <div class="mini-card-wrapper">
+      <div class="mini-card">
+        <section class="mini-section" aria-labelledby="mini-sekcija-naslov">
+          <div class="mini-left">
+            <h2 id="mini-sekcija-naslov">Uzmi besplatno</h2>
+            <p class="media">U mesdžidu Jela Resorta možete pronaći korisnu islamsku literaturu – prevode Kur’ana, knjige o propisima, vjerovanju i ibadetima. Sve knjige su besplatne, jer znanje je amanet koji se dijeli i daruje. </p>
+            <p class="media"><i>Ko krene putem traženja znanja, Allah će mu olakšati put do Dženneta.“ (hadis)</i></p>
+          </div>
+          <div class="mini-right">
+            <figure class="mini-img-wrap">
+              <img src="slikePrice/besplatno.jpg" alt="Ilustrativna slika" />
+            </figure>
+          </div>
+        </section>
+      </div>
+    </div>
+    
+    
+    
+
+
+    <!-- NEWSLETTER -->
+    <section class="reveal">
+      <div class="container">
+        <div class="newsletter">
+          <div>
+            <h3>Pridruži se listi za ažuriranja</h3>
+            <p class="muted">Primaj mjesečne novosti, izvještaje i pozive na akcije direktno na email.</p>
+          </div>
+          <form id="newsletterForm">
+            <div style="display:flex; gap:10px; flex-wrap:wrap;">
+              <input class="input" type="text" name="name" placeholder="Ime i prezime" required>
+              <input class="input" type="email" name="email" placeholder="Email" required>
+              <button class="btn" type="submit">Prijavi se</button>
+            </div>
+            <small id="newsletterMsg" class="muted"></small>
+          </form>
+        </div>
+      </div>
+    </section>
+
+
+
+    <!-- KONTAKT -->
+    <section id="kontakt" class="reveal">
+      <div class="container">
+        <span class="tag">Podrška</span>
+        <h2 class="section-title">Donirajte i podržite naš rad</h2>
+        <div class="cards">
+          
+          <!-- Lijeva kolona -->
+          <div class="card" style="grid-column: span 7;">
+            <h3>Zašto su donacije važne?</h3>
+            <p class="muted">
+              Svaka donacija nam pomaže da realizujemo projekte i aktivnosti koje 
+              doprinose zajednici. Bilo da je riječ o simboličnom iznosu ili većoj 
+              podršci – svaki doprinos čini razliku. 
+            </p>
+            <div class="spacer"></div>
+            <div style="display:flex; gap:10px; flex-wrap:wrap;">
+              <a class="btn" href="bakirsutovic10@gmail.com">✉️ Kontaktirajte nas</a>
+              <a class="btn ghost" href="https://www.instagram.com/endelusnvo/" target="_blank">📸 Instagram</a>
+              <a class="btn ghost" href="https://www.facebook.com/p/NVO-Endelus-Ro%C5%BEaje-100067392337487/" target="_blank">🌐 Facebook</a>
+            </div>
+          </div>
+    
+          <!-- Desna kolona -->
+          <div class="card" style="grid-column: span 5;">
+            <h3>Podaci za uplatu</h3>
+            <p class="muted">
+              NVO Endelus<br/>
+              Žiro račun: <br/>
+              NLB Banka Podgorica
+            </p>
+            <div class="spacer"></div>
+            <div style="background: var(--bg); border-radius:12px; aspect-ratio:4/3; display:grid; place-items:center; border:1px dashed rgba(255,255,255,.15);">
+              <small class="muted"></small>
+            </div>
+          </div>
+    
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container footer-grid">
+      <div>
+        <div class="brand" style="margin-bottom:8px;">
+          <div class="brand-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M2 12h20" /></svg></div>
+          <strong><img src="logo.png"  width="70px" alt=""></strong>
+        </div>
+        <p class="muted">Zagovaramo mir, dostojanstvo i jednak pristup resursima. Hvala što ste dio naše priče.</p>
+      </div>
+      <div>
+        <strong>Brzi linkovi</strong>
+        <ul>
+          <li><a href="#o-nama">O nama</a></li>
+          <li><a href="#video">Galerija</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <strong>Newsletter</strong>
+        <form id="footerNewsletter">
+          <input class="input" type="email" name="email" placeholder="Email" required style="width:100%; margin-bottom:8px;">
+          <button class="btn" type="submit" style="width:100%">Prijavi se</button>
+          <small id="footerMsg" class="muted"></small>
+        </form>
+      </div>
+    </div>
+    <div class="container" style="margin-top: 20px; display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap;">
+      <small class="muted">© <span id="year"></span> NVO Endelus. Sva prava zadržana.</small>
+      
+    </div>
+  </footer>
+
+  
+
+
+  <!-- Back to top -->
+  <button class="to-top" id="toTop" aria-label="Nazad na vrh">▲</button>
+
+ <script src="script.js"></script>
+</body>
+
+</html>
