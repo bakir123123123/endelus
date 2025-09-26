@@ -99,6 +99,19 @@ section{ padding: 80px 20px; }
 .stat{ padding:22px; background: var(--card); border:1px solid rgba(255,255,255,.08); border-radius: var(--radius); text-align:center; }
 .stat .num{ font-size: clamp(28px, 4vw, 40px); font-weight: 900; }
 .stat .label{ color: var(--muted); }
+@media (max-width: 768px) {
+  #uticaj .stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  #uticaj .num {
+    font-size: 1.6rem;
+  }
+
+  #uticaj .label {
+    font-size: 0.9rem;
+  }
+}
 
 /* Stories carousel */
 .carousel{ position: relative; overflow:hidden; border-radius: var(--radius); }
@@ -347,6 +360,7 @@ footer > .container:last-child {
   padding: 20px;            /* malo prostora sa strane */
   box-sizing: border-box;   /* da padding ne širi kontejner */
 }
+
 
 
 
