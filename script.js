@@ -15,7 +15,6 @@ const themeToggle = document.getElementById('themeToggle');
       applyTheme(cur === 'light' ? 'dark' : 'light');
     });
 
-    // === Mobile meni ===
     const menuToggle = document.getElementById('menuToggle');
     const mobileDrawer = document.getElementById('mobileDrawer');
     menuToggle?.addEventListener('click', ()=>{
@@ -24,7 +23,6 @@ const themeToggle = document.getElementById('themeToggle');
     });
     mobileDrawer.querySelectorAll('a').forEach(a=>a.addEventListener('click', ()=> mobileDrawer.style.display='none'));
 
-    // === Hero video kontrole ===
     const heroVideo = document.getElementById('heroVideo');
     const heroPlay = document.getElementById('heroPlay');
     heroPlay.addEventListener('click', ()=>{
@@ -32,7 +30,6 @@ const themeToggle = document.getElementById('themeToggle');
       else { heroVideo.pause(); heroPlay.textContent = 'Pusti video'; }
     });
 
-    // === Brojači (count-up) ===
     const statNums = document.querySelectorAll('.stat .num');
     let statsStarted = false;
     function animateStats(){
@@ -50,7 +47,6 @@ const themeToggle = document.getElementById('themeToggle');
       })
     }
 
-    // === Carousel ===
     const track = document.getElementById('track');
     const slides = Array.from(track.children);
     let index = 0;
@@ -59,7 +55,6 @@ const themeToggle = document.getElementById('themeToggle');
     document.getElementById('next').addEventListener('click', ()=> goTo(index+1));
     setInterval(()=> goTo(index+1), 13000);
 
-    // === FAQ akordeon ===
     document.querySelectorAll('.faq-item').forEach(item=>{
       item.querySelector('.faq-q').addEventListener('click', ()=> item.classList.toggle('open'));
     });
@@ -68,7 +63,6 @@ const themeToggle = document.getElementById('themeToggle');
     
 
 
-    // === Scroll spy + aktivni linkovi ===
     const navLinks = document.querySelectorAll('nav.desktop a');
     const sections = Array.from(navLinks).map(a => document.querySelector(a.getAttribute('href')));
     const spy = new IntersectionObserver((entries)=>{
@@ -83,21 +77,18 @@ const themeToggle = document.getElementById('themeToggle');
     },{ threshold:.4 });
     sections.forEach(sec=> sec && spy.observe(sec));
 
-    // === Reveal on scroll ===
     const revealEls = document.querySelectorAll('.reveal');
     const revealIO = new IntersectionObserver((entries)=>{
       entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('show'); revealIO.unobserve(e.target); } })
     },{ threshold:.2 });
     revealEls.forEach(el=>revealIO.observe(el));
 
-    // === Pokreni brojače kada je sekcija u viewportu ===
     const statsSection = document.getElementById('uticaj');
     const statsIO = new IntersectionObserver((entries)=>{
       if(entries[0].isIntersecting && !statsStarted){ statsStarted = true; animateStats(); statsIO.disconnect(); }
     },{threshold:.4});
     statsIO.observe(statsSection);
 
-    // === Back to top dugme ===
     const toTop = document.getElementById('toTop');
     window.addEventListener('scroll', ()=>{
       const y = window.scrollY;
@@ -105,7 +96,6 @@ const themeToggle = document.getElementById('themeToggle');
     });
     toTop.addEventListener('click', ()=> window.scrollTo({ top: 0, behavior: 'smooth' }));
 
-    // === Reading progress ===
     const progress = document.getElementById('progress');
     document.addEventListener('scroll', ()=>{
       const h = document.documentElement;
@@ -113,12 +103,10 @@ const themeToggle = document.getElementById('themeToggle');
       progress.style.transform = `scaleX(${p})`;
     });
 
-    // === Godina u footeru ===
     document.getElementById('year').textContent = new Date().getFullYear();
 
 
 
-    // Smooth scroll sa provjerom
 document.querySelectorAll('.nav-links a').forEach(anchor => {
   anchor.addEventListener('click', function(e) {
     e.preventDefault();
@@ -128,6 +116,7 @@ document.querySelectorAll('.nav-links a').forEach(anchor => {
     }
   });
 });
+
 
 
     bootFromHash();
