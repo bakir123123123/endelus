@@ -114,14 +114,63 @@ section{ padding: 80px 20px; }
 }
 
 /* Stories carousel */
-.carousel{ position: relative; overflow:hidden; border-radius: var(--radius); }
-.track{ display:flex; transition: transform .6s cubic-bezier(.2,.7,.1,1); }
-.slide{ min-width:100%; background: var(--card); display:grid; grid-template-columns: 1.2fr 1fr; align-items: stretch; }
-.slide .media{ aspect-ratio:16/10; background: #0a0f14; object-fit: cover; width:100%; height:100%; }
-.slide .content{ padding:24px; display:flex; flex-direction:column; gap:10px; }
-@media (max-width: 690px){ .slide{ grid-template-columns:1fr; } }
-.carousel .controls{ position:absolute; inset:auto 10px 10px 10px; display:flex; justify-content:space-between; }
-.ctrl{ padding:10px 14px; border-radius:12px; background: var(--glass); backdrop-filter: var(--blur); border:1px solid rgba(255,255,255,.12); cursor:pointer; }
+.carousel {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius);
+}
+
+.track {
+  display: flex;
+  transition: transform .6s cubic-bezier(.2, .7, .1, 1);
+}
+
+.slide {
+  min-width: 100%;
+  background: var(--card);
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  align-items: start; /* umjesto stretch – sprječava da slika proguta tekst */
+}
+
+.slide .media {
+  display: block;
+  width: 100%;
+  height: auto;          /* uklonjeno height: 100% */
+  aspect-ratio: 16/10;
+  object-fit: cover;
+  background: #0a0f14;
+}
+
+.slide .content {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+@media (max-width: 900px) {
+  .slide {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto; /* osigurava da slika zauzme samo svoju visinu */
+  }
+}
+
+.carousel .controls {
+  position: absolute;
+  inset: auto 10px 10px 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.ctrl {
+  padding: 10px 14px;
+  border-radius: 12px;
+  background: var(--glass);
+  backdrop-filter: var(--blur);
+  border: 1px solid rgba(255, 255, 255, .12);
+  cursor: pointer;
+}
 
 /* FAQ */
 .faq-item{ border:1px solid rgba(255,255,255,.1); border-radius:16px; overflow:hidden; background: var(--card); }
@@ -360,6 +409,7 @@ footer > .container:last-child {
   padding: 20px;            /* malo prostora sa strane */
   box-sizing: border-box;   /* da padding ne širi kontejner */
 }
+
 
 
 
