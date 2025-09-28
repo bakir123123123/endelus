@@ -49,7 +49,6 @@ body {
 a { color: var(--link); text-decoration: none; }
 img, video { max-width: 100%; display: block; }
 
-/* Header */
 .header { position: fixed; inset: 0 0 auto 0; height: 72px; z-index: 50; display: flex; align-items: center; justify-content: space-between; padding: 0 20px; backdrop-filter: var(--blur); background: var(--glass); border-bottom: 1px solid rgba(255,255,255,.08); }
 .brand { display: flex; align-items: center; gap: 12px; font-weight: 800; letter-spacing:.2px; }
 .brand-mark{ width:36px; height:36px; border-radius:12px; background: linear-gradient(135deg,var(--primary),var(--accent)); box-shadow: var(--shadow); display:grid; place-items:center; }
@@ -65,7 +64,6 @@ img, video { max-width: 100%; display: block; }
 
 
 
-/* Mobile nav */
 .menu-toggle{ display:none; }
 @media (max-width: 900px){ .menu-toggle{ display:inline-flex; } .nav.desktop{ display: none; } }
 .mobile-drawer{ position: fixed; inset:72px 0 auto 0; height: calc(100dvh - 72px); background: var(--bg-soft); padding:20px; display:none; flex-direction: column; gap:14px; z-index:49;  }
@@ -73,7 +71,6 @@ img, video { max-width: 100%; display: block; }
 
 main{ overflow:hidden; }
 
-/* Hero with video background */
 .hero{ position: relative; min-height: 92dvh; display:grid; place-items:center; }
 .hero video{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter: brightness(.55) saturate(1.1); }
 .hero .overlay{ position:relative; z-index:1; text-align:center; padding: 120px 20px 60px; max-width: 1000px; }
@@ -82,7 +79,6 @@ main{ overflow:hidden; }
 .lead{ font-size: clamp(16px, 2.1vw, 20px); color: var(--muted); max-width: 800px; margin: 0 auto 24px; }
 .hero-cta{ display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
 
-/* Sections */
 section{ padding: 80px 20px; }
 .container{ max-width: 1200px; margin: 0 auto; }
 
@@ -172,19 +168,16 @@ section{ padding: 80px 20px; }
   cursor: pointer;
 }
 
-/* FAQ */
 .faq-item{ border:1px solid rgba(255,255,255,.1); border-radius:16px; overflow:hidden; background: var(--card); }
 .faq-q{ padding:18px 20px; cursor:pointer; display:flex; justify-content:space-between; align-items:center; }
 .faq-a{ max-height:0; overflow:hidden; transition:max-height .35s ease; padding: 0 20px; }
 .faq-item.open .faq-a{ max-height: 240px; padding-bottom: 16px; }
 
-/* Newsletter */
 .newsletter{ display:grid; grid-template-columns: 1.5fr 1fr; gap:20px; align-items:center; background: linear-gradient(180deg,var(--card),transparent), var(--card); border:1px solid rgba(255,255,255,.08); border-radius: var(--radius); padding:26px; }
 @media (max-width: 900px){ .newsletter{ grid-template-columns: 1fr; } }
 .input{ height:48px; border-radius:12px; border:1px solid rgba(255,255,255,.15); background: transparent; color: var(--text); padding: 0 14px; }
 .input:focus{ outline:none; box-shadow: var(--ring); }
 
-/* Modal */
 .modal{ position: fixed; inset:0; background: rgba(0,0,0,.5); display:none; place-items:center; z-index:60; }
 .modal.open{ display:grid; }
 .modal-card{ width:min(900px, 92vw); background: var(--bg-soft); border:1px solid rgba(255,255,255,.1); border-radius: 24px; padding: 0; box-shadow: var(--shadow); overflow: hidden; }
@@ -208,7 +201,6 @@ footer .container {
   gap: 30px;
 }
 
-/* Brand sekcija */
 .brand {
   display: flex;
   align-items: center;
@@ -228,7 +220,6 @@ footer small.muted {
   line-height: 1.4;
 }
 
-/* Linkovi */
 footer ul {
   list-style: none;
   padding: 0;
@@ -249,7 +240,6 @@ footer ul li a:hover {
   color: #4CAF50;
 }
 
-/* Newsletter */
 footer form .input {
   padding: 10px;
   border: none;
@@ -279,14 +269,12 @@ footer form small {
   font-size: 0.8rem;
 }
 
-/* Donji red */
 footer > .container:last-child {
   border-top: 1px solid #333;
   padding-top: 15px;
 }
 
 
-/* Utilities */
 .center{ text-align:center; }
 .muted{ color: var(--muted); }
 .spacer{ height: 20px; }
@@ -294,14 +282,11 @@ footer > .container:last-child {
 .section-title{ font-size: clamp(28px, 4.4vw, 44px); margin: 6px 0 12px; }
 .section-lead{ color: var(--muted); max-width: 800px; }
 
-/* Back to top */
 .to-top{ position: fixed; right: 16px; bottom: 16px; width:48px; height:48px; border-radius:14px; display:grid; place-items:center; border:1px solid rgba(255,255,255,.15); background: var(--glass); backdrop-filter: var(--blur); cursor:pointer; opacity:0; pointer-events:none; transition:opacity .2s; z-index:55; }
 .to-top.show{ opacity:1; pointer-events:auto; }
 
-/* Reading progress */
 .progress{ position: fixed; inset:0 0 auto 0; height:4px; background: linear-gradient(90deg, var(--primary), var(--accent)); transform-origin: 0 50%; transform: scaleX(0); z-index:70; }
 
-/* Reveal on scroll */
 .reveal{ opacity: 0; transform: translateY(16px); transition: opacity .5s ease, transform .5s ease; }
 .reveal.show{ opacity: 1; transform: translateY(0); }
 
@@ -310,7 +295,6 @@ footer > .container:last-child {
 .nav.desktop a{ color: #2dd4bf; }
 
 
-/* MINI SEKCija - izolirani stilovi */
 .mini-card {
   max-width: 980px;
   background: #ffffff;
@@ -387,7 +371,6 @@ footer > .container:last-child {
   transform:translateZ(0);
 }
 
-/* Responsive: stack on small screens */
 @media (max-width:740px){
   .mini-section {
     flex-direction: column;
@@ -403,12 +386,13 @@ footer > .container:last-child {
 }
 .mini-card-wrapper {
   display: flex;
-  align-items: center;      /* vertikalno centriranje */
-  justify-content: center;  /* horizontalno centriranje */
-  min-height: 50vh;        /* da popuni visinu ekrana */
-  padding: 20px;            /* malo prostora sa strane */
-  box-sizing: border-box;   /* da padding ne širi kontejner */
+  align-items: center;      
+  justify-content: center;  
+  min-height: 50vh;        
+  padding: 20px;            
+  box-sizing: border-box;   
 }
+
 
 
 
