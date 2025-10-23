@@ -393,6 +393,12 @@ footer > .container:last-child {
   box-sizing: border-box;   
 }
 
+@media (max-width: 900px) {
+  .slide img[src="drva.jpg"] {
+    margin-bottom: -300px;
+  }
+}
+
 
 
 
