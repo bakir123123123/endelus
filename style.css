@@ -392,12 +392,15 @@ footer > .container:last-child {
   padding: 20px;            
   box-sizing: border-box;   
 }
+.slide img { margin-bottom: -10px; }
+
 
 @media (max-width: 900px) {
   .slide img[src="drva.jpg"] {
     margin-bottom: -300px;
   }
 }
+
 
 
 
